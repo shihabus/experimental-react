@@ -85,5 +85,17 @@ yarn upgrade react@experimental react-dom@experimental
 ...
 const rootElement = document.getElementById('root');
 
-ReactDOM.unstable_createRoot(rootElement).render(<App />);
+ReactDOM.createRoot(rootElement).render(<App />);
+```
+
+### [useTransition Hook](https://reactjs.org/docs/concurrent-mode-patterns.html#wrapping-setstate-in-a-transition)
+
+When updating UI long tasks will always block the thread. This can hinder the user experiment and user might feel a jittery effect.
+
+React have come up with a new hook called `useTransition` which allow the user to de-prioritize UI updates. This allow to create something similar to concurrent UI.
+
+Suppose if you have an API call that has to update the state. The UI is blocked when the fetching in progress. By using, `useTransition` one can let React know that, this update is not important, and it can be deferred/delayed.
+
+```
+const [startTransition,isPending]=useTransition()
 ```

@@ -5,10 +5,8 @@ let initialPokemon = suspenseFetch(fetchPokemon(1));
 
 export default function PokemonDetails() {
   const [pokemonResource, setPokemonResource] = React.useState(initialPokemon);
-  const [startTransition, isPending] = React.useTransition({
-    timeoutMs: 3000
-  });
-  console.log('isPending', isPending);
+  const [startTransition] = React.useTransition();
+
   const pokemon = pokemonResource.read();
   return (
     <div>
