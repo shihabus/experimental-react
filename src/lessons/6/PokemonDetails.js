@@ -8,13 +8,20 @@ function DelaySpinner() {
     <span role="img" aria-label="spinner" className="DelaySpinner">
       <style>{`
         .DelaySpinner {
-          animation: rotation 1.5s infinite linear;
+          animation: 0s linear 0.5s forwards makeVisible, rotation 1.5s infinite linear;
           display: inline-block;
-          font-size: .7rem
+          font-size: .7rem;
+          visibility: hidden;
         }
         @keyframes rotation {
           from { transform: rotate(0deg) }
           to { transform: rotate(359deg) }
+        }
+        
+        @keyframes makeVisible {
+          to {
+            visibility: visible;
+          }
         }
       `}</style>
       🌀
@@ -27,7 +34,7 @@ export default function PokemonDetails() {
   // how long we have to waiting before showing Suspense fallback
   // if the new state appears before that update it
   // isPending is true if the button is clicked and waiting for state update
-  const [startTransition, isPending] = React.useTransition({ timeoutMs: 1000 });
+  const [startTransition, isPending] = React.useTransition({ timeoutMs: 3000 });
 
   const pokemon = pokemonResource.read();
   return (
