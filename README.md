@@ -97,5 +97,5 @@ React have come up with a new hook called `useTransition` which allow the user t
 Suppose if you have an API call that has to update the state. The UI is blocked when the fetching in progress. By using, `useTransition` one can let React know that, this update is not important, and it can be deferred/delayed.
 
 ```
-const [startTransition,isPending]=useTransition()
+const [startTransition,isPending]=useTransition({ timeoutMs:x })
 ```
