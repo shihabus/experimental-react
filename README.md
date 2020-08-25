@@ -99,3 +99,7 @@ Suppose if you have an API call that has to update the state. The UI is blocked 
 ```
 const [startTransition,isPending]=useTransition({ timeoutMs:x })
 ```
+
+### useDeferred Value
+
+When you want to hold on to the current value for an explicit time

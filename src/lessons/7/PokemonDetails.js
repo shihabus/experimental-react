@@ -34,11 +34,8 @@ export default function PokemonDetails() {
   // how long we have to waiting before showing Suspense fallback
   // if the new state appears before that update it
   // isPending is true if the button is clicked and waiting for state update
-  const [startTransition] = React.useTransition({ timeoutMs: 3000 });
-  const deferredPokemonResource = React.unstable_useDeferredValue(pokemonResource, {
-    timeoutMs: 3000
-  })
-  const isPending = deferredPokemonResource !== pokemonResource
+  const [startTransition, isPending] = React.useTransition({ timeoutMs: 3000 });
+
   const pokemon = pokemonResource.read();
   return (
     <div>
